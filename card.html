@@ -12,6 +12,30 @@
     class="bg-[url('./assets/image/card/bg.jpg')] bg-cover bg-center w-screen h-screen"
   >
     <div
+      id="loading-overlay"
+      class="absolute top-0 left-0 z-50 flex items-center justify-center w-full h-full transition-all delay-300 bg-white"
+    >
+      <div class="heartbeatloader">
+        <svg
+          class="svgdraw"
+          width="100%"
+          height="100%"
+          viewBox="0 0 150 400"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="path"
+            d="M 0 200 l 40 0 l 5 -40 l 5 40 l 10 0 l 5 15 l 10 -140 l 10 220 l 5 -95 l 10 0 l 5 20 l 5 -20 l 30 0"
+            fill="transparent"
+            stroke-width="4"
+            stroke="black"
+          ></path>
+        </svg>
+        <div class="innercircle"></div>
+        <div class="outercircle"></div>
+      </div>
+    </div>
+    <div
       id="card-cover"
       class="relative flex m-auto justify-center items-center max-w-[768px] w-full h-full shadow-md delay-500 transition-all opacity-1 overflow-hidden"
     >
@@ -20,7 +44,7 @@
       >
         <p class="mb-10 text-4xl card-title">Save The Date</p>
         <div
-          class="flex flex-col items-center justify-center w-11/12 p-3 bg-white aspect-square"
+          class="flex flex-col items-center justify-center w-11/12 p-3 bg-white aspect-auto"
         >
           <div class="grid grid-cols-3 gap-3 aspect-[6/3]">
             <img
@@ -45,7 +69,7 @@
               <p class="text-xl font-normal name">&</p>
               <p class="text-xl font-normal name">Ngọc Trang</p>
             </div>
-            <div class="grid items-center grid-cols-3 gap-2 mt-3">
+            <div class="grid items-center grid-cols-3 gap-2 mt-3 time-part">
               <div class="w-full py-3 text-center border-t border-b h-fit">
                 SUNDAY
               </div>
@@ -61,8 +85,8 @@
           </div>
         </div>
 
-        <button class="z-50 mt-5 open">
-          Mở thiệp
+        <button id="open-card-btn" class="z-50 mt-5 open">
+          OPEN
           <div class="icon-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
