@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mow - Mini Online Wedding Invitation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[url('./assets/image/card/bg.jpg')] bg-cover bg-center w-screen h-screen"
+  >
+    <div class="flex items-center justify-center w-full h-screen">
+      <center>
+        <h1>Thiệp cưới sẽ ở đây trong một thời gian nữa!!!</h1>
+      </center>
+    </div>
+  </body>
+</html>
