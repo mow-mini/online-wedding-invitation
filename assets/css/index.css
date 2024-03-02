@@ -26,6 +26,11 @@ body {
 }
 
 @font-face {
+  font-family: Allison-Regular;
+  src: url(../font/Allison-Regular.ttf);
+}
+
+@font-face {
   font-family: FZ Collection;
   src: url(../font/FZ\ Collection.ttf);
 }
@@ -518,9 +523,24 @@ button.open:hover .icon-5 {
 }
 
 #customer-name {
-  font-family: "Fz Takoyaki", serif;
+  font-family: "Allison-Regular", serif;
 }
 
 .restaurant-name {
-  font-family: "FZ Collection";
+  font-family: "Allison-Regular", serif;
+}
+.sound-mute {
+  position: relative;
+}
+
+.sound-mute:after {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 1px;
+  background: #c00;
+  content: "";
+  width: 100%;
+  display: block;
+  rotate: -45deg;
 }
