@@ -37,31 +37,31 @@
     </div>
     <div
       id="card-cover"
-      class="relative flex m-auto justify-center items-center max-w-[768px] w-full h-full shadow-md delay-400 transition-all opacity-1 overflow-hidden"
+      class="relative flex m-auto justify-center items-center max-w-[768px] w-full h-fit min-h-full shadow-md delay-400 transition-all opacity-1 z-40"
     >
       <div
-        class="flex flex-col items-center justify-center w-full h-full bg-gray-300/30 backdrop-blur-[3px]"
+        class="flex flex-col items-center justify-center w-full h-screen bg-gray-300/30 backdrop-blur-[3px]"
       >
         <p class="mb-10 text-4xl card-title">Save The Date</p>
         <div
           class="flex flex-col items-center justify-center w-11/12 p-3 bg-white detail-part aspect-auto"
         >
           <p class="w-full mb-3 text-sm text-center card-date">
-            Sunday - 24 . 03 . 2024
+            Sunday - <span id="card-cover-date">24 . 03 . 2024</span>
           </p>
           <div class="grid grid-cols-3 gap-3 aspect-[6/3]">
             <img
-              class="aspect-[2/3] object-cover object-left"
+              class="aspect-[2/3] object-cover object-left grid-img1"
               src="./assets/image/card/image-1.png"
               alt=""
             />
             <img
-              class="aspect-[2/3] object-cover object-center"
+              class="aspect-[2/3] object-cover object-center grid-img2"
               src="./assets/image/card/image-2.png"
               alt=""
             />
             <img
-              class="aspect-[2/3] object-cover object-right"
+              class="aspect-[2/3] object-cover object-right grid-img3"
               src="./assets/image/card/image-3.jpg"
               alt=""
             />
@@ -72,6 +72,7 @@
               class="flex flex-col items-center justify-center mt-3 md:flex-row"
             >
               <p
+                id="short-name-1"
                 class="flex-1 w-full text-6xl font-normal text-center text-red-700 sm:w-fit name grow"
               >
                 Yên Hoàng
@@ -82,6 +83,7 @@
                 &
               </p>
               <p
+                id="short-name-2"
                 class="flex-1 w-full text-6xl font-normal text-center text-red-700 sm:w-fit name grow"
               >
                 Ngọc Trang
@@ -218,6 +220,7 @@
             </svg>
           </div>
         </button>
+
         <audio
           id="card-audio"
           loop
@@ -225,7 +228,7 @@
         ></audio>
       </div>
     </div>
-    <div id="card-detail" class="hidden w-full h-full">
+    <div id="card-detail" class="relative z-20 hidden w-full h-full">
       <div
         id="card-detail-2"
         class="text-[#AF7D19] w-full h-full flex flex-col items-center justify-center bg-[url('./assets/image/card/invite-card-background-2.jpeg')] bg-cover bg-center"
@@ -234,39 +237,47 @@
           class="grid w-full grid-cols-2 mx-auto mb-3 max-w-80 text-[#563a02]"
         >
           <div class="flex flex-col">
-            <p class="text-center">Nhà gái</p>
-            <p class="text-center">Ông Đỗ Ngọc Sáng</p>
-            <p class="text-center">Bà Nguyễn Thị Sa</p>
-            <p class="text-xs text-center">
+            <p id="family-type-1" class="text-center">Nhà gái</p>
+            <p id="family-dad-1" class="text-center">Ông Đỗ Ngọc Sáng</p>
+            <p id="family-mom-1" class="text-center">Bà Nguyễn Thị Sa</p>
+            <p id="family-add-1" class="text-xs text-center">
               Tân Khai, Hớn Quản <br />
               Bình Phước
             </p>
           </div>
           <div class="flex flex-col">
-            <p class="text-center">Nhà trai</p>
-            <p class="text-center">Ông Võ Đình Thuận</p>
-            <p class="text-center">Bà Nguyễn Thị Hoà</p>
-            <p class="text-xs text-center">
+            <p id="family-type-2" class="text-center">Nhà trai</p>
+            <p id="family-dad-2" class="text-center">Ông Võ Đình Thuận</p>
+            <p id="family-mom-2" class="text-center">Bà Nguyễn Thị Hoà</p>
+            <p id="family-add-2" class="text-xs text-center">
               Tân Hiệp, Hớn Quản <br />
               Bình Phước
             </p>
           </div>
         </div>
         <p class="text-center uppercase">Trân trọng báo tin</p>
-        <p class="mt-3 text-2xl text-center uppercase" id="customer-name">
+        <p class="mt-3 text-2xl text-center uppercase" id="wedding-type">
           Lễ Vu Quy
         </p>
         <p class="mt-3 text-sm text-center uppercase">của con chúng tôi</p>
-        <p class="mt-3 text-center text-black text-7xl restaurant-name">
+        <p
+          id="detail-full-name-1"
+          class="mt-3 text-center text-black text-7xl restaurant-name"
+        >
           Đỗ Ngọc Trang
         </p>
-        <p class="text-xs text-center">Thứ nữ</p>
-        <p class="mt-3 text-center text-black text-7xl restaurant-name">
+        <p class="text-xs text-center" id="detail-name-type-1">Thứ nữ</p>
+        <p
+          id="detail-full-name-2"
+          class="mt-3 text-center text-black text-7xl restaurant-name"
+        >
           Võ Yên Hoàng
         </p>
-        <p class="text-xs text-center">Thứ nam</p>
+        <p class="text-xs text-center" id="detail-name-type-2">Thứ nam</p>
         <p class="mt-3 text-center uppercase">Hôn lễ được cử hành tại tư gia</p>
-        <p class="mt-3 text-center uppercase">Vào lúc 09H00 | Chủ nhật</p>
+        <p id="event-full-date" class="mt-3 text-center uppercase">
+          Vào lúc 09H00 | Chủ nhật
+        </p>
         <p class="my-3 text-2xl text-center text-black">31 . 03 . 2024</p>
         <p class="text-xs text-center">(Nhằm ngày 22 tháng 02 năm Giáp Thìn)</p>
       </div>
@@ -275,31 +286,65 @@
         class="text-[#AF7D19] w-full h-full flex flex-col items-center justify-center bg-[url('./assets/image/card/invite-card-background-1.jpeg')] bg-cover bg-center"
       >
         <p class="text-center uppercase">Trân trọng kính mời</p>
-        <p class="mt-3 text-2xl text-center uppercase" id="customer-name">
+        <p class="mb-3 text-2xl text-center uppercase" id="customer-name">
           QUÝ KHÁCH
         </p>
-        <p class="mt-3 text-sm text-center uppercase">
+        <p class="mb-3 text-sm text-center uppercase">
           đến dự buổi tiệc rượu <br />
           chung vui cùng gia đình chúng tôi tại
         </p>
-        <p class="mt-3 text-center text-black uppercase">
+        <p id="location-1" class="text-center text-black uppercase">
           Trung tâm hội nghị tiệc cưới
         </p>
-        <p class="mt-3 text-center text-black text-7xl restaurant-name">
+        <p
+          id="location-2"
+          class="mb-3 text-center text-black text-7xl restaurant-name"
+        >
           "Tấn Kiệt"
         </p>
-        <p class="mt-3 text-xs text-center">
+        <p id="wedding-location-address" class="mb-3 text-xs text-center">
           Quốc lộ 13, huyện Hớn Quản, tỉnh Bình Phước
         </p>
-        <p class="mt-3 text-center uppercase">Vào lúc 11H00 | Chủ nhật</p>
-        <p class="my-3 text-2xl text-center text-black">24 . 03 . 2024</p>
-        <p class="text-xs text-center">(Nhằm ngày 15 tháng 02 năm Giáp Thìn)</p>
-        <p class="mt-3 text-sm text-center uppercase">
+        <p class="text-center uppercase">Vào lúc 11H00 | Chủ nhật</p>
+        <p id="event-date-2" class="my-3 text-2xl text-center text-black">
+          24 . 03 . 2024
+        </p>
+        <p class="text-xs text-center">
+          (Nhằm ngày <span id="lunar-date">15</span> tháng
+          <span id="lunar-month">02</span> năm Giáp Thìn)
+        </p>
+        <p class="my-3 text-sm text-center uppercase">
           SỰ HIỆN DIỆN CỦA QUÝ KHÁCH <br />
           LÀ NIỀM VINH DỰ CHO GIA ĐÌNH CHÚNG TÔI
         </p>
-        <p class="mt-3 text-sm text-center uppercase">TRÂN TRỌNG KÍNH MỜI!</p>
+        <p class="mb-3 text-sm text-center uppercase">TRÂN TRỌNG KÍNH MỜI!</p>
       </div>
     </div>
+    <button
+      class="fixed bottom-0 z-30 flex flex-col items-center justify-center transition-all delay-500 -translate-x-1/2 left-1/2"
+      id="down-btn"
+    >
+      <p class="text-[#af7d19]">Swipe</p>
+      <svg
+        class="rotate-90"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+        viewBox="0 0 66 43"
+        height="30px"
+        width="30px"
+      >
+        <g fill-rule="evenodd" fill="none" stroke-width="1" stroke="none">
+          <path
+            fill="#af7d19"
+            d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+          ></path>
+          <path
+            fill="#af7d19"
+            d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+          ></path>
+        </g>
+      </svg>
+    </button>
   </body>
 </html>
