@@ -1,0 +1,104 @@
+{
+  "a": {
+    "fullName1": "Võ Yên Hoàng",
+    "name1": "Hoàng",
+    "shortName1": "Yên Hoàng",
+    "name1Type": "Thứ nam",
+    "fullName2": "Đỗ Ngọc Trang",
+    "shortName2": "Ngọc Trang",
+    "name2": "Trang",
+    "name2Type": "Thứ nữ",
+    "weddingType": "Lễ Tân Hôn",
+    "time": {
+      "weddingDate": "31",
+      "weddingLunarDate": "22",
+      "weddingLunarMonth": "02",
+      "ancestralTime": "10H00"
+    },
+    "weddingLocation": {
+      "address": "<span>Tổ 5, Ấp Sóc 5, Xã Tân Hiệp <br> Huyện Hớn Quản, Tỉnh Bình Phước</span>",
+      "name1": "",
+      "name2": "\"Tư Gia\""
+    },
+    "family1": {
+      "title": "Nhà trai",
+      "dad": "Ông Võ Đình Thuận",
+      "mom": "Bà Nguyễn Thị Hoà",
+      "address": "Tân Hiệp, Hớn Quản, Bình Phước"
+    },
+    "family2": {
+      "title": "Nhà gái",
+      "dad": "Ông Đỗ Ngọc Sáng",
+      "mom": "Bà Nguyễn Thị Sa",
+      "address": "Tân Khai, Hớn Quản, Bình Phước"
+    }
+  },
+  "e": {
+    "fullName1": "Đỗ Ngọc Trang",
+    "name1": "Trang",
+    "shortName1": "Ngọc Trang",
+    "name1Type": "Thứ nữ",
+    "fullName2": "Võ Yên Hoàng",
+    "shortName2": "Yên Hoàng",
+    "name2": "Hoàng",
+    "name2Type": "Thứ nam",
+    "weddingType": "Lễ Vu Quy",
+    "time": {
+      "weddingDate": "24",
+      "weddingLunarDate": "15",
+      "weddingLunarMonth": "02",
+      "ancestralTime": "09H00"
+    },
+    "weddingLocation": {
+      "address": "Quốc lộ 13, huyện Hớn Quản, tỉnh Bình Phước",
+      "name1": "Trung tâm hội nghị tiệc cưới",
+      "name2": "\"Tấn Kiệt\""
+    },
+    "family1": {
+      "title": "Nhà gái",
+      "dad": "Ông Đỗ Ngọc Sáng",
+      "mom": "Bà Nguyễn Thị Sa",
+      "address": "Tân Khai, Hớn Quản, Bình Phước"
+    },
+    "family2": {
+      "title": "Nhà trai",
+      "dad": "Ông Võ Đình Thuận",
+      "mom": "Bà Nguyễn Thị Hoà",
+      "address": "Tân Hiệp, Hớn Quản, Bình Phước"
+    }
+  },
+  "null": {
+    "fullName1": "Đỗ Ngọc Trang",
+    "name1": "Trang",
+    "shortName1": "Ngọc Trang",
+    "name1Type": "Thứ nữ",
+    "fullName2": "Võ Yên Hoàng",
+    "shortName2": "Yên Hoàng",
+    "name2": "Hoàng",
+    "name2Type": "Thứ nam",
+    "weddingType": "Lễ Vu Quy",
+    "time": {
+      "weddingDate": "24",
+      "weddingLunarDate": "15",
+      "weddingLunarMonth": "02",
+      "ancestralTime": "09H00"
+    },
+    "weddingLocation": {
+      "address": "Quốc lộ 13, huyện Hớn Quản, tỉnh Bình Phước",
+      "name1": "Trung tâm hội nghị tiệc cưới",
+      "name2": "Tấn Kiệt"
+    },
+    "family1": {
+      "title": "Nhà gái",
+      "dad": "Ông Đỗ Ngọc Sáng",
+      "mom": "Bà Nguyễn Thị Sa",
+      "address": "Tân Khai, Hớn Quản, Bình Phước"
+    },
+    "family2": {
+      "title": "Nhà trai",
+      "dad": "Ông Võ Đình Thuận",
+      "mom": "Bà Nguyễn Thị Hoà",
+      "address": "Tân Hiệp, Hớn Quản, Bình Phước"
+    }
+  }
+}

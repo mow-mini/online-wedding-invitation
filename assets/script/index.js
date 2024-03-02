@@ -3,116 +3,22 @@ const searchParams = new URLSearchParams(window.location.search);
 const type = searchParams.get("f");
 const customer = searchParams.get("c");
 let customerName = "Quý Khách";
-// if (customer) {
-//   // call to get customer data
-// }
-const data = {
-  a: {
-    fullName1: "Võ Yên Hoàng",
-    name1: "Hoàng",
-    shortName1: "Yên Hoàng",
-    name1Type: "Thứ nam",
-    fullName2: "Đỗ Ngọc Trang",
-    shortName2: "Ngọc Trang",
-    name2: "Trang",
-    name2Type: "Thứ nữ",
-    weddingType: "Lễ Tân Hôn",
-    time: {
-      weddingDate: "31",
-      weddingLunarDate: "22",
-      weddingLunarMonth: "02",
-      ancestralTime: "10H00",
-    },
-    weddingLocation: {
-      address:
-        "<span>Tổ 5, Ấp Sóc 5, Xã Tân Hiệp <br> Huyện Hớn Quản, Tỉnh Bình Phước</span>",
-      name1: "",
-      name2: '"Tư gia"',
-    },
-    family1: {
-      title: "Nhà trai",
-      dad: "Ông Võ Đình Thuận",
-      mom: "Bà Nguyễn Thị Hoà",
-      address: "Tân Hiệp, Hớn Quản, Bình Phước",
-    },
-    family2: {
-      title: "Nhà gái",
-      dad: "Ông Đỗ Ngọc Sáng",
-      mom: "Bà Nguyễn Thị Sa",
-      address: "Tân Khai, Hớn Quản, Bình Phước",
-    },
-  },
-  e: {
-    fullName1: "Đỗ Ngọc Trang",
-    name1: "Trang",
-    shortName1: "Ngọc Trang",
-    name1Type: "Thứ nữ",
-    fullName2: "Võ Yên Hoàng",
-    shortName2: "Yên Hoàng",
-    name2: "Hoàng",
-    name2Type: "Thứ nam",
-    weddingType: "Lễ Vu Quy",
-    time: {
-      weddingDate: "24",
-      weddingLunarDate: "15",
-      weddingLunarMonth: "02",
-      ancestralTime: "09H00",
-    },
-    weddingLocation: {
-      address: "Quốc lộ 13, huyện Hớn Quản, tỉnh Bình Phước",
-      name1: "Trung tâm hội nghị tiệc cưới",
-      name2: '"Tấn Kiệt"',
-    },
-    family1: {
-      title: "Nhà gái",
-      dad: "Ông Đỗ Ngọc Sáng",
-      mom: "Bà Nguyễn Thị Sa",
-      address: "Tân Khai, Hớn Quản, Bình Phước",
-    },
-    family2: {
-      title: "Nhà trai",
-      dad: "Ông Võ Đình Thuận",
-      mom: "Bà Nguyễn Thị Hoà",
-      address: "Tân Hiệp, Hớn Quản, Bình Phước",
-    },
-  },
-  null: {
-    fullName1: "Đỗ Ngọc Trang",
-    name1: "Trang",
-    shortName1: "Ngọc Trang",
-    name1Type: "Thứ nữ",
-    fullName2: "Võ Yên Hoàng",
-    shortName2: "Yên Hoàng",
-    name2: "Hoàng",
-    name2Type: "Thứ nam",
-    weddingType: "Lễ Vu Quy",
-    time: {
-      weddingDate: "24",
-      weddingLunarDate: "15",
-      weddingLunarMonth: "02",
-      ancestralTime: "09H00",
-    },
-    weddingLocation: {
-      address: "Quốc lộ 13, huyện Hớn Quản, tỉnh Bình Phước",
-      name1: "Trung tâm hội nghị tiệc cưới",
-      name2: "Tấn Kiệt",
-    },
-    family1: {
-      title: "Nhà gái",
-      dad: "Ông Đỗ Ngọc Sáng",
-      mom: "Bà Nguyễn Thị Sa",
-      address: "Tân Khai, Hớn Quản, Bình Phước",
-    },
-    family2: {
-      title: "Nhà trai",
-      dad: "Ông Võ Đình Thuận",
-      mom: "Bà Nguyễn Thị Hoà",
-      address: "Tân Hiệp, Hớn Quản, Bình Phước",
-    },
-  },
-};
 
-function setupData() {
+async function getCustomer(customer) {
+  return await fetch("/data/customer.json")
+    .then((data) => data.json())
+    .then((result) => result.find((i) => i.id == customer) || false)
+    .catch((result) => false);
+}
+
+async function getCardData() {
+  return await fetch("/data/data.json")
+    .then((data) => data.json())
+    .then((result) => result)
+    .catch((result) => false);
+}
+
+function setupData(data) {
   console.log(type, data[type]);
   const info = data[type] || data.null;
   const coverDate = document.getElementById("card-cover-date");
@@ -173,13 +79,18 @@ function onSwipe() {
   swipeBtn.classList.add("invisible");
 }
 
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", async (event) => {
+  const cust = await getCustomer(customer);
+  const result = await getCardData();
+  if (result) {
+    setupData(result);
+  }
+  if (cust) {
+    setupCustomerName(cust);
+  }
   const openCardBtn = document.getElementById("open-card-btn");
   const cardCover = document.getElementById("card-cover");
   const cardDetail = document.getElementById("card-detail");
-  const upBtn = document.getElementById("up-btn");
-  const downBtn = document.getElementById("down-btn");
-  setupData();
   setupCustomerName();
   if (openCardBtn && cardCover) {
     openCardBtn.addEventListener("click", () => {
@@ -190,14 +101,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
         showLoadingLayer();
       }, 800);
       document.addEventListener("scroll", onSwipe);
+      document.body.classList.remove("overflow-hidden");
     });
   }
-  upBtn.addEventListener("click", () => {
-    console.log(123);
-  });
-  downBtn.addEventListener("click", () => {
-    console.log(876);
-  });
 });
 
 function showLoadingLayer() {
@@ -210,14 +116,32 @@ function showLoadingLayer() {
   }, LOAD_TIME);
 }
 
-async function setupCustomerName() {
+async function setupCustomerName(customer) {
+  const { name } = customer;
   const customerName = document.getElementById("customer-name");
-  const name = "Quý Khách";
+  // const name = "Quý Khách";
   customerName.innerText = name;
 }
 
 function playAudio() {
+  let isPlaying = false;
   const cardAudio = document.getElementById("card-audio");
+  const audioControlBtn = document.getElementById("audio-control");
+
+  cardAudio.onplaying = function () {
+    isPlaying = true;
+  };
+  cardAudio.onpause = function () {
+    isPlaying = false;
+  };
+  audioControlBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      cardAudio.pause();
+    } else {
+      cardAudio.play();
+    }
+    audioControlBtn.classList.toggle("sound-mute");
+  });
   let volume = 0;
   let targetVolume = 0.4;
   if (cardAudio) {
