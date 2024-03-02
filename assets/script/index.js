@@ -1,4 +1,4 @@
-const LOAD_TIME = 0;
+const LOAD_TIME = 1500;
 
 window.addEventListener("DOMContentLoaded", (event) => {
   const openCardBtn = document.getElementById("open-card-btn");
@@ -7,12 +7,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setupCustomerName();
   if (openCardBtn && cardCover) {
     openCardBtn.addEventListener("click", () => {
-      //   playAudio();
+      playAudio();
       setTimeout(() => {
         cardCover.classList.add("hidden");
         cardDetail.classList.remove("hidden");
         showLoadingLayer();
-      }, 0);
+      }, 1000);
     });
   }
 });
