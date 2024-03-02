@@ -3,9 +3,9 @@ const searchParams = new URLSearchParams(window.location.search);
 const type = searchParams.get("f");
 const customer = searchParams.get("c");
 let customerName = "Quý Khách";
-if (customer) {
-  // call to get customer data
-}
+// if (customer) {
+//   // call to get customer data
+// }
 const data = {
   a: {
     fullName1: "Võ Yên Hoàng",
