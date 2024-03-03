@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thiệp mời | Hoàng - Trang</title>
+    <title>Yên Hoàng 🩷 Ngọc Trang</title>
     <link rel="stylesheet" href="./assets/css/index.css" />
     <script src="./assets/script/index.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/libs/aosjs/aos@2.3.1/aos.js"></script>
+    <link href="./assets/libs/aosjs/aos@2.3.1/aos.css" rel="stylesheet" />
   </head>
   <body
-    class="bg-[url('./assets/image/card/bg.jpg')] bg-cover bg-center w-screen h-screen overflow-hidden"
+    class="scroller bg-[url('./assets/image/card/bg.jpg')] bg-cover bg-center w-screen h-screen overflow-hidden select-none"
   >
     <div
       id="loading-overlay"
@@ -35,7 +37,7 @@
         <div class="outercircle"></div>
       </div>
     </div>
-    <div
+    <section
       id="card-cover"
       class="relative flex m-auto justify-center items-center max-w-[768px] w-full h-fit min-h-full shadow-md delay-400 transition-all opacity-1 z-40"
     >
@@ -227,9 +229,9 @@
           src="./assets/sound/Wedding Piano - AShamaluevMusic.mp3"
         ></audio>
       </div>
-    </div>
-    <div id="card-detail" class="relative z-20 hidden w-full h-full">
-      <div
+    </section>
+    <div id="card-detail" class="relative z-20 hidden w-full h-full scroller">
+      <section
         id="card-detail-2"
         class="text-[#AF7D19] w-full h-full flex flex-col items-center justify-center bg-[url('./assets/image/card/invite-card-background-2.jpeg')] bg-cover bg-center"
       >
@@ -280,13 +282,16 @@
         </p>
         <p class="my-3 text-2xl text-center text-black">31 . 03 . 2024</p>
         <p class="text-xs text-center">(Nhằm ngày 22 tháng 02 năm Giáp Thìn)</p>
-      </div>
-      <div
+      </section>
+      <section
         id="card-detail-1"
         class="text-[#AF7D19] w-full h-full flex flex-col items-center justify-center bg-[url('./assets/image/card/invite-card-background-1.jpeg')] bg-cover bg-center"
       >
         <p class="mb-3 text-center uppercase">Trân trọng kính mời</p>
-        <p class="mb-3 text-4xl text-center text-black" id="customer-name">
+        <p
+          class="mb-3 text-4xl tracking-widest text-center text-black"
+          id="customer-name"
+        >
           Quý Khách
         </p>
         <p class="mb-3 text-sm text-center uppercase">
@@ -318,8 +323,65 @@
           LÀ NIỀM VINH DỰ CHO GIA ĐÌNH CHÚNG TÔI
         </p>
         <p class="mb-3 text-sm text-center uppercase">TRÂN TRỌNG KÍNH MỜI!</p>
-      </div>
+      </section>
     </div>
+
+    <section id="landing-page" class="hidden landing-page">
+      <div class="grid grid-cols-3 gap-2" data-aos="fade-right">
+        <div class="col-span-2">
+          <p>Chú Rễ</p>
+          <p>Võ Yên Hoàng</p>
+          <p>
+            "Nhiều người có thể nói với cô ấy rằng cô ấy xinh đẹp nhưng lần duy
+            nhất cô ấy lắng nghe là khi điều đó được nói ra từ tôi, người đàn
+            ông cô ấy yêu."
+          </p>
+        </div>
+        <div class="col-span-1">
+          <img
+            width="100%"
+            class="object-cover"
+            src="./assets/image/card/image-1.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="flex gap-2" data-aos="fade-right">
+        <img src="./assets/image/card/image-1.png" alt="" />
+        <div>
+          <p>Võ Yên Hoàng</p>
+          <p>Chú Rễ</p>
+        </div>
+      </div>
+      <div class="flex gap-2" data-aos="fade-right">
+        <img src="./assets/image/card/image-1.png" alt="" />
+        <div>
+          <p>Võ Yên Hoàng</p>
+          <p>Chú Rễ</p>
+        </div>
+      </div>
+      <div class="flex gap-2" data-aos="fade-right">
+        <img src="./assets/image/card/image-1.png" alt="" />
+        <div>
+          <p>Võ Yên Hoàng</p>
+          <p>Chú Rễ</p>
+        </div>
+      </div>
+      <div class="flex gap-2" data-aos="fade-right">
+        <img src="./assets/image/card/image-1.png" alt="" />
+        <div>
+          <p>Võ Yên Hoàng</p>
+          <p>Chú Rễ</p>
+        </div>
+      </div>
+      <div class="flex gap-2" data-aos="fade-right">
+        <img src="./assets/image/card/image-1.png" alt="" />
+        <div>
+          <p>Võ Yên Hoàng</p>
+          <p>Chú Rễ</p>
+        </div>
+      </div>
+    </section>
     <button
       class="fixed bottom-0 z-30 flex flex-col items-center justify-center transition-all delay-500 -translate-x-1/2 left-1/2"
       id="down-btn"
