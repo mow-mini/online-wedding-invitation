@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
 body {
   background-image: url("../image/card/bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* padding: 15px; */
   position: relative;
 }
 
@@ -44,8 +45,6 @@ body {
   font-family: The Seasons;
   src: url(../font/Fontspring-DEMO-theseasons-reg.otf);
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 .card-title {
   font-family: "Amsterdam Four";
@@ -543,4 +542,31 @@ button.open:hover .icon-5 {
   width: 100%;
   display: block;
   rotate: -45deg;
+}
+
+.scroller {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.scroller section {
+  scroll-snap-align: start;
+}
+
+.section--code .code {
+  width: 100%;
+  height: 100px;
+}
+
+html,
+.scroller {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar,
+.scroller::-webkit-scrollbar {
+  width: 0px; /* For Chrome, Safari, and Opera */
 }

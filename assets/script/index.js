@@ -19,7 +19,6 @@ async function getCardData() {
 }
 
 function setupData(data) {
-  console.log(type, data[type]);
   const info = data[type] || data.null;
   const coverDate = document.getElementById("card-cover-date");
   const coverShortName1 = document.getElementById("short-name-1");
@@ -58,7 +57,6 @@ function setupData(data) {
   if (familyAdd2) familyAdd2.innerText = info.family2.address;
   if (familyAdd1) familyAdd1.innerText = info.family1.address;
   if (weddingType) weddingType.innerText = info.weddingType;
-  console.log(info.weddingType);
   if (detailName1) detailName1.innerText = info.fullName1;
   if (detailName2) detailName2.innerText = info.fullName2;
   if (detailNameType1) detailNameType1.innerText = info.name1Type;
@@ -80,27 +78,34 @@ function onSwipe() {
 }
 
 window.addEventListener("DOMContentLoaded", async (event) => {
-  const cust = await getCustomer(customer);
+  const guest = await getCustomer(customer);
   const result = await getCardData();
+
   if (result) {
     setupData(result);
   }
-  if (cust) {
-    setupCustomerName(cust);
+  if (guest) {
+    setupCustomerName(guest);
   }
   const openCardBtn = document.getElementById("open-card-btn");
   const cardCover = document.getElementById("card-cover");
   const cardDetail = document.getElementById("card-detail");
-  setupCustomerName();
+  const landingPage = document.getElementById("landing-page");
   if (openCardBtn && cardCover) {
     openCardBtn.addEventListener("click", () => {
-      playAudio();
+      // playAudio();
       setTimeout(() => {
         cardCover.classList.add("hidden");
-        cardDetail.classList.remove("hidden");
         showLoadingLayer();
+        cardDetail.classList.remove("hidden");
+        landingPage.classList.remove("hidden");
+        if (AOS) {
+          AOS.init();
+        }
       }, 800);
-      document.addEventListener("scroll", onSwipe);
+      cardDetail.addEventListener("scroll", () => {
+        onSwipe();
+      });
       document.body.classList.remove("overflow-hidden");
     });
   }
