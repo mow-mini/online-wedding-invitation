@@ -1,138 +1,163 @@
-const LOAD_TIME = 1500;
+const API =
+  "https://script.google.com/macros/s/AKfycbyIXx6-x-Rf-cMUOpQqTeYEDDf8lusaHi79Fq_AZ1GRjI7G9fY_K5LMR4rugeiSMyBUKQ/exec";
 const searchParams = new URLSearchParams(window.location.search);
 const type = searchParams.get("f");
 const customer = searchParams.get("c");
+const MAP_DATA = {
+  a: {
+    frame:
+      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3909.5713516953256!2d106.5060551!3d11.510813!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b55e4382e7a8b%3A0x877b1866dcb2478b!2zTW934oCZcyBIb21l!5e0!3m2!1sen!2s!4v1709737635492!5m2!1sen!2s",
+    link: "https://maps.app.goo.gl/ZuzG2u1f6Tca8tkg9",
+  },
+  e: {
+    frame:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d355.99467555142417!2d106.61601868276591!3d11.547837719068992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174aa3013db398b%3A0xc889eb9d40275e0!2zVHLhuqFtIHjEg25nIGThuqd1IFThuqVuIEtp4buHdA!5e0!3m2!1svi!2s!4v1710038286387!5m2!1svi!2s",
+    link: "https://maps.app.goo.gl/gyuf8ZymXpuJLkEH6",
+  },
+};
+
 let customerName = "Quý Khách";
 
+function setThemeColor(color) {
+  document
+    .querySelector('meta[name="theme-color"]')
+    .setAttribute("content", color);
+}
+
 async function getCustomer(customer) {
-  return await fetch("/data/customer.json")
-    .then((data) => data.json())
-    .then((result) => result.find((i) => i.id == customer) || false)
-    .catch((result) => false);
+  try {
+    const response = await fetch(`${API}?id=${customer}`);
+    const data = await response.json();
+    return data.isSuccess ? data.result : false;
+  } catch (error) {
+    return false;
+  }
 }
 
 async function getCardData() {
-  return await fetch("/data/data.json")
-    .then((data) => data.json())
-    .then((result) => result)
-    .catch((result) => false);
+  try {
+    const response = await fetch("/data/data.json");
+    return await response.json();
+  } catch (error) {
+    return false;
+  }
 }
 
 function setupData(data) {
   const info = data[type] || data.null;
-  const coverDate = document.getElementById("card-cover-date");
-  const coverShortName1 = document.getElementById("short-name-1");
-  const coverShortName2 = document.getElementById("short-name-2");
-  const familyType2 = document.getElementById("family-type-2");
-  const familyType1 = document.getElementById("family-type-1");
-  const familyDad2 = document.getElementById("family-dad-2");
-  const familyDad1 = document.getElementById("family-dad-1");
-  const familyMom2 = document.getElementById("family-mom-2");
-  const familyMom1 = document.getElementById("family-mom-1");
-  const familyAdd2 = document.getElementById("family-add-2");
-  const familyAdd1 = document.getElementById("family-add-1");
-  const weddingType = document.getElementById("wedding-type");
-  const detailName1 = document.getElementById("detail-full-name-1");
-  const detailName2 = document.getElementById("detail-full-name-2");
-  const detailNameType1 = document.getElementById("detail-name-type-1");
-  const detailNameType2 = document.getElementById("detail-name-type-2");
-  const location1 = document.getElementById("location-1");
-  const location2 = document.getElementById("location-2");
-  const detailEventFullDate = document.getElementById("event-full-date");
-  const eventDate2 = document.getElementById("event-date-2");
-  const lunarMonth = document.getElementById("lunar-month");
-  const lunarDate = document.getElementById("lunar-date");
+  const elements = {
+    "card-cover-date": `${info.time.weddingDate} . 03 . 2024`,
+    "short-name-1": info.shortName1,
+    "short-name-2": info.shortName2,
+    "family-type-2": info.family2.title,
+    "family-type-1": info.family1.title,
+    "family-dad-2": info.family2.dad,
+    "family-dad-1": info.family1.dad,
+    "family-mom-2": info.family2.mom,
+    "family-mom-1": info.family1.mom,
+    "family-add-2": info.family2.address,
+    "family-add-1": info.family1.address,
+    "wedding-type": info.weddingType,
+    "detail-full-name-1": info.fullName1,
+    "detail-full-name-2": info.fullName2,
+    "detail-name-type-1": info.name1Type,
+    "detail-name-type-2": info.name2Type,
+    "location-1": info.weddingLocation.name1,
+    "location-2": info.weddingLocation.name2,
+    "event-date-2": `${info.time.weddingDate} . 03 . 2024`,
+    "lunar-month": info.time.weddingLunarMonth,
+    "lunar-date": info.time.weddingLunarDate,
+    // "wedding-location-address": info.weddingLocation.address,
+    "event-full-date": `Vào lúc ${info.time.ancestralTime} | Chủ nhật`,
+  };
+
+  for (const id in elements) {
+    const element = document.getElementById(id);
+    if (element) element.innerText = elements[id];
+  }
   const weddingLocationAddress = document.getElementById(
     "wedding-location-address"
   );
-  if (coverDate) coverDate.innerText = `${info.time.weddingDate} . 03 . 2024`;
-  if (coverShortName1) coverShortName1.innerText = info.shortName1;
-  if (coverShortName2) coverShortName2.innerText = info.shortName2;
-  if (familyType2) familyType2.innerText = info.family2.title;
-  if (familyType1) familyType1.innerText = info.family1.title;
-  if (familyDad2) familyDad2.innerText = info.family2.dad;
-  if (familyDad1) familyDad1.innerText = info.family1.dad;
-  if (familyMom2) familyMom2.innerText = info.family2.mom;
-  if (familyMom1) familyMom1.innerText = info.family1.mom;
-  if (familyAdd2) familyAdd2.innerText = info.family2.address;
-  if (familyAdd1) familyAdd1.innerText = info.family1.address;
-  if (weddingType) weddingType.innerText = info.weddingType;
-  if (detailName1) detailName1.innerText = info.fullName1;
-  if (detailName2) detailName2.innerText = info.fullName2;
-  if (detailNameType1) detailNameType1.innerText = info.name1Type;
-  if (detailNameType2) detailNameType2.innerText = info.name2Type;
-  if (location1) location1.innerText = info.weddingLocation.name1;
-  if (location2) location2.innerText = info.weddingLocation.name2;
-  if (eventDate2) eventDate2.innerText = `${info.time.weddingDate} . 03 . 2024`;
-  if (lunarMonth) lunarMonth.innerText = info.time.weddingLunarMonth;
-  if (lunarDate) lunarDate.innerText = info.time.weddingLunarDate;
-  if (weddingLocationAddress)
-    weddingLocationAddress.innerHTML = info.weddingLocation.address;
-  if (detailEventFullDate)
-    detailEventFullDate.innerText = `Vào lúc ${info.time.ancestralTime} | Chủ nhật`;
+  weddingLocationAddress.innerHTML = info.weddingLocation.address;
 }
 
 function onSwipe() {
-  const swipeBtn = document.getElementById("down-btn");
-  swipeBtn.classList.add("invisible");
+  document.getElementById("down-btn").classList.add("invisible");
 }
 
 window.addEventListener("DOMContentLoaded", async (event) => {
-  const guest = await getCustomer(customer);
-  const result = await getCardData();
-
-  if (result) {
-    setupData(result);
-  }
-  if (guest) {
-    setupCustomerName(guest);
-  }
   const openCardBtn = document.getElementById("open-card-btn");
   const cardCover = document.getElementById("card-cover");
   const cardDetail = document.getElementById("card-detail");
-  const landingPage = document.getElementById("landing-page");
+  const actionSection = document.getElementById("action-section");
+
   if (openCardBtn && cardCover) {
-    openCardBtn.addEventListener("click", () => {
-      // playAudio();
-      setTimeout(() => {
-        cardCover.classList.add("hidden");
-        showLoadingLayer();
-        cardDetail.classList.remove("hidden");
-        landingPage.classList.remove("hidden");
-        if (AOS) {
-          AOS.init();
-        }
-      }, 800);
-      cardDetail.addEventListener("scroll", () => {
-        onSwipe();
-      });
-      document.body.classList.remove("overflow-hidden");
+    openCardBtn.addEventListener("click", async () => {
+      cardCover.classList.add("hidden");
+      initTabAction();
+      toggleLoadingLayer();
+
+      const result = await getCardData();
+      if (result) {
+        const timeout = setTimeout(() => {
+          setupData(result);
+          cardDetail.classList.remove("hidden");
+          actionSection.classList.remove("hidden");
+          playAudio();
+
+          setupLocationView(type);
+
+          if (AOS) {
+            AOS.init();
+          }
+
+          cardDetail.addEventListener("scroll", onSwipe);
+          document.body.classList.remove("overflow-hidden");
+
+          toggleLoadingLayer();
+          setThemeColor("white");
+        }, 1000);
+      }
+
+      const guest = await getCustomer(customer);
+      if (guest) {
+        setupCustomerName(guest);
+      }
     });
   }
 });
 
-function showLoadingLayer() {
-  const loadingLayer = document.querySelector("#loading-overlay");
-  loadingLayer.classList.toggle("flex");
-  loadingLayer.classList.toggle("hidden");
-  setTimeout(() => {
-    loadingLayer.classList.toggle("flex");
-    loadingLayer.classList.toggle("hidden");
-  }, LOAD_TIME);
+function toggleLoadingLayer() {
+  document.querySelector("#loading-overlay").classList.toggle("flex");
+  document.querySelector("#loading-overlay").classList.toggle("hidden");
+  setThemeColor("white");
 }
 
 async function setupCustomerName(customer) {
   const { name } = customer;
-  const customerName = document.getElementById("customer-name");
-  // const name = "Quý Khách";
-  customerName.innerText = name;
+  const customerNameElement = document.getElementById("customer-name");
+  if (customerNameElement) {
+    customerNameElement.innerText = name;
+  }
+}
+
+function setupLocationView(type) {
+  const mapFrame = document.getElementById("location-map");
+  const mapLink = document.getElementById("location-link");
+  const data = MAP_DATA[type] || {
+    frame:
+      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3909.5713516953256!2d106.5060551!3d11.510813!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b55e4382e7a8b%3A0x877b1866dcb2478b!2zTW934oCZcyBIb21l!5e0!3m2!1sen!2s!4v1709737635492!5m2!1sen!2s",
+    link: "https://maps.app.goo.gl/ZuzG2u1f6Tca8tkg9",
+  };
+  mapFrame?.setAttribute("src", data.frame);
+  mapLink?.setAttribute("href", data.link);
 }
 
 function playAudio() {
-  let isPlaying = false;
   const cardAudio = document.getElementById("card-audio");
   const audioControlBtn = document.getElementById("audio-control");
 
+  let isPlaying = false;
   cardAudio.onplaying = function () {
     isPlaying = true;
   };
@@ -147,12 +172,13 @@ function playAudio() {
     }
     audioControlBtn.classList.toggle("sound-mute");
   });
+
   let volume = 0;
-  let targetVolume = 0.4;
+  const targetVolume = 0.4;
   if (cardAudio) {
     cardAudio.play();
 
-    let interval = setInterval(function () {
+    const interval = setInterval(() => {
       if (volume < targetVolume) {
         volume += 0.02;
         cardAudio.volume = volume;
@@ -163,10 +189,19 @@ function playAudio() {
   }
 }
 
-document.onreadystatechange = function () {
-  if (document.readyState === "complete") {
-    setTimeout(() => {
-      //   document.querySelector("#loading-overlay").style.display = "none";
-    }, LOAD_TIME);
-  }
-};
+function initTabAction() {
+  const actionSection = document.getElementById("action-section");
+  const tabContainer = actionSection.querySelector(".tabs");
+  const tabs = tabContainer.querySelectorAll(".tab");
+  const btnContainer = document.getElementById("action-btn");
+  btnContainer.addEventListener("click", function (event) {
+    const targetElement = document.getElementById("action-section");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+    if (event.target.tagName === "BUTTON") {
+      tabs.forEach((elm) => elm.classList.add("hidden"));
+      tabs[event.target.dataset.id - 1].classList.remove("hidden");
+    }
+  });
+}
