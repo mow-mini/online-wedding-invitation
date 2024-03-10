@@ -3,17 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yên Hoàng 🩷 Ngọc Trang</title>
+    <meta name="theme-color" content="#c2c3c5ab" />
+    <title>Yên Hoàng ❤️ Ngọc Trang</title>
     <link rel="stylesheet" href="./assets/css/index.css" />
     <script src="./assets/script/index.js"></script>
+    <link rel="icon" type="image/x-icon" href="/love.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./assets/libs/aosjs/aos@2.3.1/aos.js"></script>
     <link href="./assets/libs/aosjs/aos@2.3.1/aos.css" rel="stylesheet" />
+    <meta
+      property="og:title"
+      content="Yên Hoàng ❤️ Ngọc Trang Wedding Invitation"
+    />
+    <meta
+      property="og:description"
+      content="Thiệp mời đám cưới & các thông tin về tiệc cưới cho mọi người ạ"
+    />
+    <meta property="og:image" content="./assets/image/card/image-2.png" />
+    <meta property="og:url" content="invite.mow-mini.one" />
   </head>
   <body
     class="scroller bg-[url('./assets/image/card/bg.jpg')] bg-cover bg-center w-screen h-screen overflow-hidden select-none"
   >
-    <div
+    <section
       id="loading-overlay"
       class="absolute top-0 left-0 z-50 items-center justify-center hidden w-full h-full transition-all delay-300 bg-white"
     >
@@ -36,7 +48,7 @@
         <div class="innercircle"></div>
         <div class="outercircle"></div>
       </div>
-    </div>
+    </section>
     <section
       id="card-cover"
       class="relative flex m-auto justify-center items-center max-w-[768px] w-full h-fit min-h-full shadow-md delay-400 transition-all opacity-1 z-40"
@@ -230,7 +242,10 @@
         ></audio>
       </div>
     </section>
-    <div id="card-detail" class="relative z-20 hidden w-full h-full scroller">
+    <section
+      id="card-detail"
+      class="relative z-20 hidden w-full h-full scroller"
+    >
       <section
         id="card-detail-2"
         class="text-[#AF7D19] w-full h-full flex flex-col items-center justify-center bg-[url('./assets/image/card/invite-card-background-2.jpeg')] bg-cover bg-center"
@@ -289,7 +304,7 @@
       >
         <p class="mb-3 text-center uppercase">Trân trọng kính mời</p>
         <p
-          class="mb-3 text-4xl tracking-widest text-center text-black"
+          class="mb-3 text-2xl tracking-widest text-center text-black"
           id="customer-name"
         >
           Quý Khách
@@ -324,64 +339,166 @@
         </p>
         <p class="mb-3 text-sm text-center uppercase">TRÂN TRỌNG KÍNH MỜI!</p>
       </section>
-    </div>
 
-    <section id="landing-page" class="hidden landing-page">
-      <!-- <div class="grid grid-cols-3 gap-2" data-aos="fade-right">
-        <div class="col-span-2">
-          <p>Chú Rễ</p>
-          <p>Võ Yên Hoàng</p>
-          <p>
-            "Nhiều người có thể nói với cô ấy rằng cô ấy xinh đẹp nhưng lần duy
-            nhất cô ấy lắng nghe là khi điều đó được nói ra từ tôi, người đàn
-            ông cô ấy yêu."
-          </p>
+      <section id="action-section" class="hidden mx-2">
+        <div class="mt-2 overflow-hidden shadow-md tabs rounded-xl min-h-96">
+          <div class="flex flex-col items-start justify-center tab">
+            <iframe
+              id="location-map"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3909.5713516953256!2d106.5060551!3d11.510813!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b55e4382e7a8b%3A0x877b1866dcb2478b!2zTW934oCZcyBIb21l!5e0!3m2!1sen!2s!4v1709737635492!5m2!1sen!2s"
+              width="100%"
+              height="350"
+              style="border: 0"
+              allowfullscreen="true"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <a
+              id="location-link"
+              href="https://maps.app.goo.gl/ZuzG2u1f6Tca8tkg9"
+              class="mt-2 text-sm text-center text-green-700"
+            >
+              Mở trong Google Map
+            </a>
+          </div>
+          <div class="hidden confirmation tab">
+            <div
+              class="grid w-full grid-cols-2 gap-2 p-2 bg-gray-200 rounded-xl"
+            >
+              <div>
+                <input
+                  type="radio"
+                  name="option"
+                  id="1"
+                  value="1"
+                  class="hidden peer"
+                  checked
+                />
+                <label
+                  for="1"
+                  class="block p-2 text-center cursor-pointer select-none rounded-xl peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+                  >1</label
+                >
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  name="option"
+                  id="2"
+                  value="2"
+                  class="hidden peer"
+                />
+                <label
+                  for="2"
+                  class="block p-2 text-center cursor-pointer select-none rounded-xl peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+                  >2</label
+                >
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  name="option"
+                  id="3"
+                  value="3"
+                  class="hidden peer"
+                />
+                <label
+                  for="3"
+                  class="block p-2 text-center cursor-pointer select-none rounded-xl peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+                  >3</label
+                >
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  name="option"
+                  id="4"
+                  value="3"
+                  class="hidden peer"
+                />
+                <label
+                  for="4"
+                  class="block p-2 text-center cursor-pointer select-none rounded-xl peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+                  >>3</label
+                >
+              </div>
+            </div>
+            <button
+              class="flex items-center justify-center w-full p-4 font-bold text-yellow-700 border border-yellow-700 rounded-lg"
+            >
+              Xác nhận
+            </button>
+          </div>
+
+          <div class="hidden mx-4 chuc-phuc-wrapper tab">
+            <!-- <label for="chuc-phuc">Gửi lời chúc cho cô dâu chú rễ</label> -->
+            <textarea
+              class="w-full px-3 py-2 border rounded-md"
+              name="chuc-phuc"
+              id="chuc-phuc"
+              cols="30"
+              placeholder="Nhập lời chúc ..."
+              rows="10"
+            ></textarea>
+            <div class="flex items-center gap-2">
+              <button
+                class="flex items-center justify-center w-full p-4 font-bold text-yellow-700 border border-yellow-700 rounded-lg"
+              >
+                Gửi
+              </button>
+            </div>
+          </div>
+
+          <div class="hidden confirmation tab">
+            <div>
+              <p>Số TK Cô dâu</p>
+              <p>Đỗ Ngọc Trang</p>
+              <p>Ngân hàng VIB - Chi Nhánh HCM</p>
+              <p>STK:</p>
+              <img src="" alt="" />
+            </div>
+
+            <div>
+              <p>Số TK Chú rễ</p>
+              <p>Võ Yên Hoàng</p>
+              <p>Ngân hàng TPBank - Chi Nhánh HCM</p>
+              <p>STK: MOWAPPLE</p>
+              <img src="" alt="" />
+            </div>
+          </div>
         </div>
-        <div class="col-span-1">
-          <img
-            width="100%"
-            class="object-cover"
-            src="./assets/image/card/image-1.png"
-            alt=""
-          />
+        <div class="grid grid-cols-4 gap-2 mb-14 mt-9" id="action-btn">
+          <button
+            class="w-full text-sm text-orange-600 underline button-tab"
+            data-id="1"
+          >
+            Bản đồ
+          </button>
+          <button
+            class="w-full text-sm text-orange-600 underline button-tab"
+            data-id="2"
+          >
+            Tham dự
+          </button>
+          <button
+            class="w-full text-sm text-orange-600 underline button-tab"
+            data-id="3"
+          >
+            Chúc phúc
+          </button>
+          <button
+            class="w-full text-sm text-orange-600 underline button-tab"
+            data-id="4"
+          >
+            Mừng cưới
+          </button>
         </div>
-      </div>
-      <div class="flex gap-2" data-aos="fade-right">
-        <img src="./assets/image/card/image-1.png" alt="" />
-        <div>
-          <p>Võ Yên Hoàng</p>
-          <p>Chú Rễ</p>
-        </div>
-      </div>
-      <div class="flex gap-2" data-aos="fade-right">
-        <img src="./assets/image/card/image-1.png" alt="" />
-        <div>
-          <p>Võ Yên Hoàng</p>
-          <p>Chú Rễ</p>
-        </div>
-      </div>
-      <div class="flex gap-2" data-aos="fade-right">
-        <img src="./assets/image/card/image-1.png" alt="" />
-        <div>
-          <p>Võ Yên Hoàng</p>
-          <p>Chú Rễ</p>
-        </div>
-      </div>
-      <div class="flex gap-2" data-aos="fade-right">
-        <img src="./assets/image/card/image-1.png" alt="" />
-        <div>
-          <p>Võ Yên Hoàng</p>
-          <p>Chú Rễ</p>
-        </div>
-      </div>
-      <div class="flex gap-2" data-aos="fade-right">
-        <img src="./assets/image/card/image-1.png" alt="" />
-        <div>
-          <p>Võ Yên Hoàng</p>
-          <p>Chú Rễ</p>
-        </div>
-      </div> -->
+      </section>
     </section>
+
     <button
       class="fixed bottom-0 z-30 flex flex-col items-center justify-center transition-all delay-500 -translate-x-1/2 left-1/2"
       id="down-btn"
