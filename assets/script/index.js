@@ -1,5 +1,5 @@
 const API =
-  "https://script.google.com/macros/s/AKfycbyIXx6-x-Rf-cMUOpQqTeYEDDf8lusaHi79Fq_AZ1GRjI7G9fY_K5LMR4rugeiSMyBUKQ/exec";
+  "https://script.google.com/macros/s/AKfycbxJm8PPLStU24ZtenelKlJIDdWWjZ8rxo5JAHHCOueNJkKICZpP0qJpAOattHwlfnNBlQ/exec";
 const searchParams = new URLSearchParams(window.location.search);
 const type = searchParams.get("f");
 const customer = searchParams.get("c");
@@ -15,6 +15,9 @@ const MAP_DATA = {
     link: "https://maps.app.goo.gl/gyuf8ZymXpuJLkEH6",
   },
 };
+let quantity = 1;
+
+let guest = null;
 
 let customerName = "Quý Khách";
 
@@ -106,6 +109,18 @@ window.addEventListener("DOMContentLoaded", async (event) => {
           playAudio();
 
           setupLocationView(type);
+          const confirmBtn = document.getElementById("confirm-btn");
+          const deniedBtn = document.getElementById("denied-btn");
+          if (confirmBtn) {
+            confirmBtn.addEventListener("click", async () => {
+              await confirmJoin(quantity);
+            });
+          }
+          if (deniedBtn) {
+            deniedBtn.addEventListener("click", async () => {
+              await confirmJoin(0);
+            });
+          }
 
           if (AOS) {
             AOS.init();
@@ -119,7 +134,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         }, 1000);
       }
 
-      const guest = await getCustomer(customer);
+      guest = await getCustomer(customer);
       if (guest) {
         setupCustomerName(guest);
       }
@@ -204,4 +219,31 @@ function initTabAction() {
       tabs[event.target.dataset.id - 1].classList.remove("hidden");
     }
   });
+}
+
+async function confirmJoin(value) {
+  try {
+    guest = { ...guest, quantity: value, isAttended: value ? true : false };
+    const response = await fetch(`${API}`, {
+      method: "POST",
+      body: JSON.stringify(guest),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    const data = await response.json();
+    if (data.isSuccess) {
+      guest = data.result;
+      alert("Gửi thông tin thành công!");
+      return guest;
+    }
+    return data.isSuccess ? data.result : false;
+  } catch (error) {
+    alert("Có lỗi xảy ra, vui lòng liên hệ trực tiếp với cô dâu hoặc chú rễ!");
+    return false;
+  }
+}
+
+function onSelectQuantity(element) {
+  quantity = element.value || 1;
 }
