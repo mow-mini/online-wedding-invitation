@@ -369,6 +369,7 @@
                 <input
                   type="radio"
                   name="option"
+                  onchange="onSelectQuantity(this)"
                   id="1"
                   value="1"
                   class="hidden peer"
@@ -385,6 +386,7 @@
                 <input
                   type="radio"
                   name="option"
+                  onchange="onSelectQuantity(this)"
                   id="2"
                   value="2"
                   class="hidden peer"
@@ -400,6 +402,7 @@
                 <input
                   type="radio"
                   name="option"
+                  onchange="onSelectQuantity(this)"
                   id="3"
                   value="3"
                   class="hidden peer"
@@ -415,8 +418,9 @@
                 <input
                   type="radio"
                   name="option"
+                  onchange="onSelectQuantity(this)"
                   id="4"
-                  value="3"
+                  value=">3"
                   class="hidden peer"
                 />
                 <label
@@ -427,9 +431,16 @@
               </div>
             </div>
             <button
+              id="confirm-btn"
               class="flex items-center justify-center w-full p-4 font-bold text-yellow-700 border border-yellow-700 rounded-lg"
             >
-              Xác nhận
+              Xác nhận tham dự
+            </button>
+            <button
+              id="denied-btn"
+              class="flex items-center justify-center w-full p-4 font-bold text-yellow-700 border border-yellow-700 rounded-lg"
+            >
+              Không thể tham dự
             </button>
           </div>
 
