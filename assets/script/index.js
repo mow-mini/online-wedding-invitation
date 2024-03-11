@@ -1,5 +1,4 @@
-const API =
-  "https://script.google.com/macros/s/AKfycbxJm8PPLStU24ZtenelKlJIDdWWjZ8rxo5JAHHCOueNJkKICZpP0qJpAOattHwlfnNBlQ/exec";
+const API = "https://mow-api.vercel.app/customer";
 const searchParams = new URLSearchParams(window.location.search);
 const type = searchParams.get("f");
 const customer = searchParams.get("c");
@@ -100,10 +99,10 @@ window.addEventListener("DOMContentLoaded", async (event) => {
       initTabAction();
       toggleLoadingLayer();
 
-      const result = await getCardData();
-      if (result) {
+      const cardData = await getCardData();
+      if (cardData) {
         const timeout = setTimeout(() => {
-          setupData(result);
+          setupData(cardData);
           cardDetail.classList.remove("hidden");
           actionSection.classList.remove("hidden");
           playAudio();
@@ -225,6 +224,7 @@ async function confirmJoin(value) {
   try {
     guest = { ...guest, quantity: value, isAttended: value ? true : false };
     const response = await fetch(`${API}`, {
+      redirect: "follow",
       method: "POST",
       body: JSON.stringify(guest),
       headers: {
@@ -242,6 +242,31 @@ async function confirmJoin(value) {
     alert("Có lỗi xảy ra, vui lòng liên hệ trực tiếp với cô dâu hoặc chú rễ!");
     return false;
   }
+  // var myHeaders = new Headers();
+  // myHeaders.append("Content-Type", "application/json");
+  // var raw = JSON.stringify({
+  //   id: "6-e6099751",
+  //   name: "vợ chồng bạn Phương Trang",
+  //   inviteBy: "a",
+  //   inviteLink: "https://invite.mow-mini.one?f=a&c=685eb0a7",
+  //   isAttended: false,
+  //   quantity: 0,
+  //   wish: "Alo Alo",
+  //   status: false,
+  // });
+  // var requestOptions = {
+  //   method: "POST",
+  //   headers: myHeaders,
+  //   body: raw,
+  //   redirect: "follow",
+  // };
+  // fetch(
+  //   "https://script.google.com/macros/s/AKfycbxJm8PPLStU24ZtenelKlJIDdWWjZ8rxo5JAHHCOueNJkKICZpP0qJpAOattHwlfnNBlQ/exec",
+  //   requestOptions
+  // )
+  //   .then((response) => response.text())
+  //   .then((result) => console.log(result))
+  //   .catch((error) => console.log("error", error));
 }
 
 function onSelectQuantity(element) {
