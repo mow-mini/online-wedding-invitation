@@ -37,28 +37,6 @@ app.post("/customer", async (req, res) => {
   }
 });
 
-app.post("/api/posts", (req, res) => {
-  const { title, content } = req.body;
-
-  // Basic validation
-  if (!title || !content) {
-    return res.status(400).json({ message: "Title and content are required" });
-  }
-
-  // Create a new post object
-  const newPost = {
-    id: posts.length + 1,
-    title,
-    content,
-  };
-
-  // Add the new post to the in-memory database
-  posts.push(newPost);
-
-  // Respond with the newly created post
-  res.status(201).json(newPost);
-});
-
 app.listen(3333, () => console.log("Server ready on port 3333."));
 
 module.exports = app;
