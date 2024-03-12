@@ -132,10 +132,15 @@ window.addEventListener("DOMContentLoaded", async (event) => {
           setThemeColor("white");
         }, 1000);
       }
-
-      guest = await getCustomer(customer);
-      if (guest) {
-        setupCustomerName(guest);
+      if (customer) {
+        guest = await getCustomer(customer);
+        if (guest) {
+          setupCustomerName(guest);
+        }
+      } else {
+        setupCustomerName({
+          name: customerName,
+        });
       }
     });
   }
@@ -208,6 +213,14 @@ function initTabAction() {
   const tabContainer = actionSection.querySelector(".tabs");
   const tabs = tabContainer.querySelectorAll(".tab");
   const btnContainer = document.getElementById("action-btn");
+  if (!customer) {
+    tabs.forEach((elm) => elm.classList.add("hidden"));
+    const iframeMap = document.getElementById("iframe-map");
+    if (iframeMap) {
+      iframeMap.classList.remove("hidden");
+    }
+    btnContainer.classList.add("un-auth");
+  }
   btnContainer.addEventListener("click", function (event) {
     const targetElement = document.getElementById("action-section");
     if (targetElement) {
@@ -221,54 +234,45 @@ function initTabAction() {
 }
 
 async function confirmJoin(value) {
-  try {
-    guest = { ...guest, quantity: value, isAttended: value ? true : false };
-    const response = await fetch(`${API}`, {
-      redirect: "follow",
-      method: "POST",
-      body: JSON.stringify(guest),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
-    const data = await response.json();
-    if (data.isSuccess) {
-      guest = data.result;
-      alert("Gửi thông tin thành công!");
-      return guest;
-    }
-    return data.isSuccess ? data.result : false;
-  } catch (error) {
-    alert("Có lỗi xảy ra, vui lòng liên hệ trực tiếp với cô dâu hoặc chú rễ!");
-    return false;
+  const response = await updateData({
+    ...guest,
+    quantity: value,
+    isAttended: value ? true : false,
+  });
+  if (response) {
+    guest = response;
+    alert("Gửi thông tin thành công!");
   }
-  // var myHeaders = new Headers();
-  // myHeaders.append("Content-Type", "application/json");
-  // var raw = JSON.stringify({
-  //   id: "6-e6099751",
-  //   name: "vợ chồng bạn Phương Trang",
-  //   inviteBy: "a",
-  //   inviteLink: "https://invite.mow-mini.one?f=a&c=685eb0a7",
-  //   isAttended: false,
-  //   quantity: 0,
-  //   wish: "Alo Alo",
-  //   status: false,
-  // });
-  // var requestOptions = {
-  //   method: "POST",
-  //   headers: myHeaders,
-  //   body: raw,
-  //   redirect: "follow",
-  // };
-  // fetch(
-  //   "https://script.google.com/macros/s/AKfycbxJm8PPLStU24ZtenelKlJIDdWWjZ8rxo5JAHHCOueNJkKICZpP0qJpAOattHwlfnNBlQ/exec",
-  //   requestOptions
-  // )
-  //   .then((response) => response.text())
-  //   .then((result) => console.log(result))
-  //   .catch((error) => console.log("error", error));
 }
 
 function onSelectQuantity(element) {
   quantity = element.value || 1;
+}
+
+async function updateData(data) {
+  try {
+    const response = await fetch(`${API}`, {
+      redirect: "follow",
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    const result = await response.json();
+    return result.isSuccess ? result.result : false;
+  } catch (error) {
+    alert("Có lỗi xảy ra, vui lòng liên hệ trực tiếp với cô dâu hoặc chú rễ!");
+    return false;
+  }
+}
+
+async function sendMessage() {
+  const textarea = document.getElementById("chuc-phuc");
+  if (textarea) {
+    const data = await updateData({ ...guest, wish: textarea.value });
+    if (data) {
+      guest = data;
+    }
+  }
 }

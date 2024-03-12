@@ -572,3 +572,7 @@ html::-webkit-scrollbar,
 .scroller::-webkit-scrollbar {
   width: 0px; /* For Chrome, Safari, and Opera */
 }
+
+#action-btn.un-auth {
+  display: none;
+}
