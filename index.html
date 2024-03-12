@@ -244,15 +244,13 @@
     </section>
     <section
       id="card-detail"
-      class="relative z-20 hidden w-full h-full scroller"
+      class="relative z-20 hidden w-full h-full scroller max-w-[768px] m-auto"
     >
       <section
         id="card-detail-2"
-        class="text-[#AF7D19] w-full h-full flex flex-col items-center justify-center bg-[url('./assets/image/card/invite-card-background-2.jpeg')] bg-cover bg-center"
+        class="text-[#AF7D19] w-full h-full flex flex-col items-center justify-center bg-[url('./assets/image/card/bg.png')] bg-cover bg-center"
       >
-        <div
-          class="grid w-full grid-cols-2 mx-auto mb-3 max-w-80 text-[#563a02]"
-        >
+        <div class="grid w-full grid-cols-2 mx-auto mb-3 max-w-80">
           <div class="flex flex-col">
             <p id="family-type-1" class="text-center">Nhà gái</p>
             <p id="family-dad-1" class="text-center">Ông Đỗ Ngọc Sáng</p>
@@ -300,7 +298,7 @@
       </section>
       <section
         id="card-detail-1"
-        class="text-[#AF7D19] w-full h-full flex flex-col items-center justify-center bg-[url('./assets/image/card/invite-card-background-1.jpeg')] bg-cover bg-center"
+        class="text-[#AF7D19] w-full h-full flex flex-col items-center justify-center bg-[url('./assets/image/card/bg.png')] bg-cover bg-center"
       >
         <p class="mb-3 text-center uppercase">Trân trọng kính mời</p>
         <p
@@ -340,34 +338,85 @@
         <p class="mb-3 text-sm text-center uppercase">TRÂN TRỌNG KÍNH MỜI!</p>
       </section>
 
-      <section id="action-section" class="hidden mx-2">
-        <div class="mt-2 overflow-hidden shadow-md tabs rounded-xl min-h-96">
+      <section
+        id="action-section"
+        class="hidden w-full h-fit pb-40 min-h-full pt-2 bg-[url('./assets/image/card/action-bg.png')] bg-cover bg-top"
+      >
+        <div class="grid grid-cols-4 gap-2 my-14" id="action-btn">
+          <button
+            class="w-full text-sm text-[#af7d19] underline button-tab"
+            data-id="1"
+          >
+            Bản đồ
+          </button>
+          <button
+            class="w-full text-sm text-[#af7d19] underline button-tab auth"
+            data-id="2"
+          >
+            Tham dự
+          </button>
+          <button
+            class="w-full text-sm text-[#af7d19] underline button-tab auth"
+            data-id="3"
+          >
+            Chúc phúc
+          </button>
+          <button
+            class="w-full text-sm text-[#af7d19] underline button-tab auth"
+            data-id="4"
+          >
+            Mừng cưới
+          </button>
+        </div>
+        <div class="mx-2 mt-4 overflow-hidden tabs min-h-96">
           <div
             id="iframe-map"
             class="flex flex-col items-start justify-center tab"
           >
-            <iframe
-              id="location-map"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3909.5713516953256!2d106.5060551!3d11.510813!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b55e4382e7a8b%3A0x877b1866dcb2478b!2zTW934oCZcyBIb21l!5e0!3m2!1sen!2s!4v1709737635492!5m2!1sen!2s"
-              width="100%"
-              height="350"
-              style="border: 0"
-              allowfullscreen="true"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <div class="w-full h-full overflow-hidden border rounded-md">
+              <iframe
+                id="location-map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3909.5713516953256!2d106.5060551!3d11.510813!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b55e4382e7a8b%3A0x877b1866dcb2478b!2zTW934oCZcyBIb21l!5e0!3m2!1sen!2s!4v1709737635492!5m2!1sen!2s"
+                width="100%"
+                height="350"
+                style="border: 0"
+                allowfullscreen="true"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
             <a
               id="location-link"
               href="https://maps.app.goo.gl/ZuzG2u1f6Tca8tkg9"
-              class="mt-2 text-sm text-center text-green-700"
+              class="flex items-center justify-center w-full p-4 font-bold text-[#af7d19] border border-[#af7d19] mt-2 text-center rounded-md cursor-pointer transition-all px-5 py-3 text-sm"
             >
-              Mở trong Google Map
+              <span>Mở trong Google Map</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.3 132.3">
+                <path
+                  fill="#1a73e8"
+                  d="M60.2 2.2C55.8.8 51 0 46.1 0 32 0 19.3 6.4 10.8 16.5l21.8 18.3L60.2 2.2z"
+                />
+                <path
+                  fill="#ea4335"
+                  d="M10.8 16.5C4.1 24.5 0 34.9 0 46.1c0 8.7 1.7 15.7 4.6 22l28-33.3-21.8-18.3z"
+                />
+                <path
+                  fill="#4285f4"
+                  d="M46.2 28.5c9.8 0 17.7 7.9 17.7 17.7 0 4.3-1.6 8.3-4.2 11.4 0 0 13.9-16.6 27.5-32.7-5.6-10.8-15.3-19-27-22.7L32.6 34.8c3.3-3.8 8.1-6.3 13.6-6.3"
+                />
+                <path
+                  fill="#fbbc04"
+                  d="M46.2 63.8c-9.8 0-17.7-7.9-17.7-17.7 0-4.3 1.5-8.3 4.1-11.3l-28 33.3c4.8 10.6 12.8 19.2 21 29.9l34.1-40.5c-3.3 3.9-8.1 6.3-13.5 6.3"
+                />
+                <path
+                  fill="#34a853"
+                  d="M59.1 109.2c15.4-24.1 33.3-35 33.3-63 0-7.7-1.9-14.9-5.2-21.3L25.6 98c2.6 3.4 5.3 7.3 7.9 11.3 9.4 14.5 6.8 23.1 12.8 23.1s3.4-8.7 12.8-23.2"
+                />
+              </svg>
             </a>
           </div>
           <div class="hidden confirmation tab">
-            <div
-              class="grid w-full grid-cols-2 gap-2 p-2 bg-gray-200 rounded-xl"
-            >
+            <div class="grid w-full grid-cols-2 gap-2 p-2 rounded-xl">
               <div>
                 <input
                   type="radio"
@@ -380,8 +429,10 @@
                 />
                 <label
                   for="1"
-                  class="block p-2 text-center cursor-pointer select-none rounded-xl peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
-                  >1</label
+                  class="flex flex-col items-center justify-center gap-3 p-2 text-center cursor-pointer select-none bg-green-800/20 aspect-square rounded-xl peer-checked:bg-green-800/60 peer-checked:font-bold peer-checked:text-white"
+                >
+                  <img src="./assets/image/card/1peo.png" alt="" />
+                  1 Người</label
                 >
               </div>
 
@@ -396,54 +447,60 @@
                 />
                 <label
                   for="2"
-                  class="block p-2 text-center cursor-pointer select-none rounded-xl peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
-                  >2</label
+                  class="flex flex-col items-center justify-center gap-3 p-2 text-center cursor-pointer select-none bg-green-800/20 aspect-square rounded-xl peer-checked:bg-green-800/60 peer-checked:font-bold peer-checked:text-white"
+                >
+                  <img src="./assets/image/card/2peo.png" alt="" />
+
+                  2 Người</label
                 >
               </div>
-
-              <!-- <div>
-                <input
-                  type="radio"
-                  name="option"
-                  onchange="onSelectQuantity(this)"
-                  id="3"
-                  value="3"
-                  class="hidden peer"
-                />
-                <label
-                  for="3"
-                  class="block p-2 text-center cursor-pointer select-none rounded-xl peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
-                  >3</label
-                >
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  name="option"
-                  onchange="onSelectQuantity(this)"
-                  id="4"
-                  value=">3"
-                  class="hidden peer"
-                />
-                <label
-                  for="4"
-                  class="block p-2 text-center cursor-pointer select-none rounded-xl peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
-                  >>3</label
-                > 
-              /div> -->
             </div>
+
             <button
               id="confirm-btn"
-              class="flex items-center justify-center w-full p-4 font-bold text-yellow-700 border border-yellow-700 rounded-lg"
+              class="flex items-center justify-center w-full p-4 font-bold text-[#af7d19] border border-[#af7d19] mt-2 text-center rounded-md cursor-pointer transition-all px-5 py-3 text-sm"
             >
               Xác nhận tham dự
+              <svg
+                class="ml-2"
+                width="40"
+                height="40"
+                viewBox="0 0 500 291"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <mask
+                  id="mask0_230_22"
+                  style="mask-type: luminance"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="500"
+                  height="291"
+                >
+                  <path d="M0 0.0888672H500V291H0V0.0888672Z" fill="white" />
+                </mask>
+                <g mask="url(#mask0_230_22)">
+                  <path
+                    d="M403.584 93.2764H373.917L319.167 38.5212C294.386 13.7399 261.438 0.0888672 226.402 0.0888672H207.86C190.282 0.0888672 173.074 3.0472 156.714 8.87012C149.016 11.6097 143.235 13.9795 139.048 16.1097C129.735 20.8337 120.98 26.8493 113.042 33.9899C100.433 45.3337 90.6309 58.6722 83.9069 73.6201C80.4694 81.2399 77.9173 88.1462 76.2871 94.2347C33.4017 100.276 0.224609 137.177 0.224609 181.641V204.349C0.224609 227.328 18.9225 246.032 41.9069 246.032H56.36C61.5319 271.662 84.2194 291.016 111.35 291.016C138.485 291.016 161.167 271.662 166.344 246.032H333.204C338.381 271.662 361.068 291.016 388.199 291.016C415.329 291.016 438.016 271.662 443.193 246.032H458.094C481.079 246.032 499.782 227.334 499.782 204.349V189.526C499.777 136.453 456.626 93.2764 403.584 93.2764ZM303.469 54.2191L342.521 93.2764H257.261L247.396 70.667C244.949 65.0524 238.423 62.4847 232.782 64.9326C227.162 67.3805 224.6 73.9274 227.048 79.5472L233.037 93.2764H208.376V22.292H226.396C255.506 22.292 282.881 33.6305 303.469 54.2191ZM104.152 82.7347C109.605 70.6097 117.594 59.766 127.886 50.4951C134.381 44.6566 141.516 39.7503 149.105 35.9066C152.396 34.2295 157.464 32.167 164.162 29.7868C171.324 27.2347 178.683 25.3545 186.173 24.1045V93.2764H99.8548C101.027 90.0107 102.464 86.4743 104.152 82.7347ZM111.35 268.813C92.6569 268.813 77.4434 253.604 77.4434 234.907C77.4434 216.209 92.6569 200.995 111.35 200.995C130.042 200.995 145.256 216.209 145.256 234.907C145.256 253.604 130.042 268.813 111.35 268.813ZM388.199 268.813C369.501 268.813 354.292 253.604 354.292 234.907C354.292 216.209 369.501 200.995 388.199 200.995C406.891 200.995 422.1 216.209 422.1 234.907C422.1 253.604 406.891 268.813 388.199 268.813ZM458.094 223.828H443.193C438.037 198.177 415.344 178.792 388.193 178.792C361.048 178.792 338.355 198.177 333.199 223.828H166.35C161.188 198.177 138.495 178.792 111.35 178.792C84.2038 178.792 61.5111 198.177 56.3496 223.828H41.9069C33.7507 223.828 26.7715 218.776 23.8757 211.646H36.1673C42.2975 211.646 47.2663 206.677 47.2663 200.547C47.2663 194.417 42.2975 189.443 36.1673 189.443H22.4225V181.641C22.4225 145.344 51.9277 115.693 88.1829 115.485C88.2298 115.485 88.2767 115.5 88.3288 115.5H249.969C249.98 115.5 249.99 115.5 250.006 115.5C250.021 115.5 250.037 115.5 250.058 115.5H364.464C364.537 115.5 364.605 115.479 364.678 115.474H403.584C433.324 115.474 458.954 133.162 470.699 158.547H455.589C449.459 158.547 444.485 163.516 444.485 169.651C444.485 175.782 449.459 180.75 455.589 180.75H477.006C477.35 183.636 477.574 186.552 477.574 189.526V193.308C471.751 193.651 467.12 198.438 467.12 204.349C467.12 209.167 470.209 213.229 474.501 214.761C471.037 220.193 465.001 223.828 458.094 223.828Z"
+                    fill="#AF7D19"
+                  />
+                </g>
+                <path
+                  d="M229.057 189.442H184.146C178.016 189.442 173.047 194.416 173.047 200.547C173.047 206.677 178.016 211.646 184.146 211.646H229.057C235.188 211.646 240.156 206.677 240.156 200.547C240.156 194.416 235.188 189.442 229.057 189.442Z"
+                  fill="#AF7D19"
+                />
+                <path
+                  d="M282.328 189.442H264.354C258.224 189.442 253.25 194.416 253.25 200.547C253.25 206.677 258.224 211.646 264.354 211.646H282.328C288.458 211.646 293.427 206.677 293.427 200.547C293.427 194.416 288.458 189.442 282.328 189.442Z"
+                  fill="#AF7D19"
+                />
+              </svg>
             </button>
             <button
               id="denied-btn"
-              class="flex items-center justify-center w-full p-4 font-bold text-yellow-700 border border-yellow-700 rounded-lg"
+              class="flex items-center justify-center w-full p-4 px-5 py-3 mt-2 text-sm font-bold text-center text-gray-500 transition-all border border-gray-500 rounded-md cursor-pointer"
             >
-              Không thể tham dự
+              Không thể tham dự 😢
             </button>
           </div>
 
@@ -452,63 +509,95 @@
               class="w-full px-3 py-2 border rounded-md"
               name="chuc-phuc"
               id="chuc-phuc"
-              cols="30"
+              cols="15"
               placeholder="Nhập lời chúc ..."
-              rows="10"
+              rows="5"
             ></textarea>
-            <div class="flex items-center gap-2">
-              <button
-                onclick="sendMessage()"
-                class="flex items-center justify-center w-full p-4 font-bold text-yellow-700 border border-yellow-700 rounded-lg"
-              >
-                Gửi Lời Chúc
-              </button>
+            <button
+              onclick="sendMessage()"
+              class="flex items-center justify-center w-full p-4 font-bold text-[#af7d19] border border-[#af7d19] mt-2 text-center rounded-md cursor-pointer transition-all px-5 py-3 text-sm"
+            >
+              <span>Gửi lời chúc</span>
+              <img src="./assets/image/card/email.svg" width="34px" alt="" />
+            </button>
+            <div class="message">
+              <p class="text-6xl text-center">Lời chúc</p>
+              <div class="px-4 shadow-md bg-black/30 rounded-xl">
+                <p class="w-full text-6xl font-bold h-7">"</p>
+                <p id="the-wish" class="text-4xl break-words">
+                  Hãy gửi lời chúc cho cô dâu và chú rể nhé!
+                </p>
+                <p class="w-full text-6xl font-bold text-right h-7">"</p>
+              </div>
             </div>
           </div>
 
-          <div class="hidden confirmation tab">
-            <div>
-              <p>Số TK Cô dâu</p>
-              <p>Đỗ Ngọc Trang</p>
-              <p>Ngân hàng VIB - Chi Nhánh HCM</p>
-              <p>STK:</p>
-              <img src="" alt="" />
+          <div class="hidden mx-4 text-sm confirmation tab">
+            <div class="grid grid-cols-3 gap-3 mb-10">
+              <div class="flex flex-col justify-center col-span-2 info">
+                <p>Cô dâu</p>
+                <p>
+                  📳 Momo: 0344771189
+                  <span
+                    class="ml-2 underline"
+                    data-value="0344771189"
+                    onclick="copyClipboard(this)"
+                  >
+                    Copy</span
+                  >
+                </p>
+                <p>👰🏻‍♀️ Đỗ Ngọc Trang</p>
+                <p>🏦 NH Quốc Tế VN(VIB)</p>
+                <p>
+                  🔢 STK: 190698666
+                  <span
+                    class="ml-2 underline"
+                    data-value="190698666"
+                    onclick="copyClipboard(this)"
+                  >
+                    Copy</span
+                  >
+                </p>
+              </div>
+              <img
+                class="overflow-hidden border rounded-md aspect-square"
+                src="./assets/image/card/QR-mini.png"
+                alt="190698666 - VIB - Đỗ Ngọc Trang"
+              />
             </div>
-
-            <div>
-              <p>Số TK Chú rễ</p>
-              <p>Võ Yên Hoàng</p>
-              <p>Ngân hàng TPBank - Chi Nhánh HCM</p>
-              <p>STK: MOWAPPLE</p>
-              <img src="" alt="" />
+            <div class="grid grid-cols-3 gap-3">
+              <img
+                class="overflow-hidden border rounded-md aspect-square"
+                src="./assets/image/card/QR-mow.png"
+                alt="MOWAPPLE - TPB - Võ Yên Hoàng"
+              />
+              <div class="flex flex-col justify-center col-span-2 info">
+                <p>Chú rể</p>
+                <p>
+                  📳 Momo: 0388377272
+                  <span
+                    class="ml-2 underline"
+                    data-value="0388377272"
+                    onclick="copyClipboard(this)"
+                  >
+                    Copy</span
+                  >
+                </p>
+                <p>🤵🏻‍♂️ Võ Yên Hoàng</p>
+                <p>🏦 NH Tiên Phong(TPBank)</p>
+                <p>
+                  🔢 STK: MOWAPPLE
+                  <span
+                    class="ml-2 underline"
+                    data-value="MOWAPPLE"
+                    onclick="copyClipboard(this)"
+                  >
+                    Copy</span
+                  >
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="grid grid-cols-4 gap-2 mb-14 mt-9" id="action-btn">
-          <button
-            class="w-full text-sm text-orange-600 underline button-tab"
-            data-id="1"
-          >
-            Bản đồ
-          </button>
-          <button
-            class="w-full text-sm text-orange-600 underline button-tab auth"
-            data-id="2"
-          >
-            Tham dự
-          </button>
-          <button
-            class="w-full text-sm text-orange-600 underline button-tab auth"
-            data-id="3"
-          >
-            Chúc phúc
-          </button>
-          <button
-            class="w-full text-sm text-orange-600 underline button-tab auth"
-            data-id="4"
-          >
-            Mừng cưới
-          </button>
         </div>
       </section>
     </section>
