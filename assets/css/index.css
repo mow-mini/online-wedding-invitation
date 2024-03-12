@@ -576,3 +576,23 @@ html::-webkit-scrollbar,
 #action-btn.un-auth {
   display: none;
 }
+
+/* ******** */
+
+#location-link > svg {
+  width: 20px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#location-link:hover svg {
+  transform: translateX(5px);
+}
+
+#location-link:active {
+  transform: scale(0.95);
+}
+
+.message p {
+  font-family: "Allison-Regular", serif;
+}

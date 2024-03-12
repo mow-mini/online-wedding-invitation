@@ -69,7 +69,6 @@ function setupData(data) {
     "event-date-2": `${info.time.weddingDate} . 03 . 2024`,
     "lunar-month": info.time.weddingLunarMonth,
     "lunar-date": info.time.weddingLunarDate,
-    // "wedding-location-address": info.weddingLocation.address,
     "event-full-date": `Vào lúc ${info.time.ancestralTime} | Chủ nhật`,
   };
 
@@ -92,6 +91,10 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   const cardCover = document.getElementById("card-cover");
   const cardDetail = document.getElementById("card-detail");
   const actionSection = document.getElementById("action-section");
+  const cardData = await getCardData();
+  if (cardData) {
+    setupData(cardData);
+  }
 
   if (openCardBtn && cardCover) {
     openCardBtn.addEventListener("click", async () => {
@@ -99,10 +102,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
       initTabAction();
       toggleLoadingLayer();
 
-      const cardData = await getCardData();
       if (cardData) {
         const timeout = setTimeout(() => {
-          setupData(cardData);
           cardDetail.classList.remove("hidden");
           actionSection.classList.remove("hidden");
           playAudio();
@@ -136,6 +137,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         guest = await getCustomer(customer);
         if (guest) {
           setupCustomerName(guest);
+          setupMessage(guest);
         }
       } else {
         setupCustomerName({
@@ -234,15 +236,17 @@ function initTabAction() {
 }
 
 async function confirmJoin(value) {
-  const response = await updateData({
+  toggleLoadingLayer();
+  const req = {
     ...guest,
     quantity: value,
     isAttended: value ? true : false,
-  });
+  };
+  const response = await updateData(req);
   if (response) {
-    guest = response;
-    alert("Gửi thông tin thành công!");
+    guest = req;
   }
+  toggleLoadingLayer();
 }
 
 function onSelectQuantity(element) {
@@ -262,17 +266,37 @@ async function updateData(data) {
     const result = await response.json();
     return result.isSuccess ? result.result : false;
   } catch (error) {
-    alert("Có lỗi xảy ra, vui lòng liên hệ trực tiếp với cô dâu hoặc chú rễ!");
+    alert("Có lỗi xảy ra, vui lòng liên hệ trực tiếp với cô dâu hoặc chú rể!");
     return false;
   }
 }
 
+function setupMessage(data) {
+  const message = document.getElementById("the-wish");
+  if (data && data.wish) {
+    message.innerText = data.wish;
+  }
+}
+
 async function sendMessage() {
+  toggleLoadingLayer();
   const textarea = document.getElementById("chuc-phuc");
   if (textarea) {
-    const data = await updateData({ ...guest, wish: textarea.value });
-    if (data) {
-      guest = data;
-    }
+    const req = { ...guest, wish: textarea.value };
+    const data = await updateData(req);
+    setupMessage(req);
+    guest = req;
+  }
+  toggleLoadingLayer();
+}
+
+function copyClipboard(element) {
+  const text = element?.dataset?.value;
+  if (text) {
+    navigator.clipboard.writeText(text);
+    element.innerText = "OK";
+    setTimeout(() => {
+      element.innerText = "Copy";
+    }, 3000);
   }
 }
