@@ -243,9 +243,8 @@ async function confirmJoin(value) {
     isAttended: value ? true : false,
   };
   const response = await updateData(req);
-  if (response) {
-    guest = req;
-  }
+  guest = req;
+
   toggleLoadingLayer();
 }
 
