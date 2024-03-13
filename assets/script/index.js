@@ -165,11 +165,7 @@ async function setupCustomerName(customer) {
 function setupLocationView(type) {
   const mapFrame = document.getElementById("location-map");
   const mapLink = document.getElementById("location-link");
-  const data = MAP_DATA[type] || {
-    frame:
-      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3909.5713516953256!2d106.5060551!3d11.510813!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b55e4382e7a8b%3A0x877b1866dcb2478b!2zTW934oCZcyBIb21l!5e0!3m2!1sen!2s!4v1709737635492!5m2!1sen!2s",
-    link: "https://maps.app.goo.gl/ZuzG2u1f6Tca8tkg9",
-  };
+  const data = MAP_DATA[type] || MAP_DATA.e;
   mapFrame?.setAttribute("src", data.frame);
   mapLink?.setAttribute("href", data.link);
 }
